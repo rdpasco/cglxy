@@ -10,69 +10,115 @@
 
 <style>
 
-/* Navbar */
+/* ====== GLOBAL ====== */
+body {
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 70px; /* Prevent content hidden behind fixed navbar */
+}
+
+/* ====== NAVBAR ====== */
 .navbar-custom {
     background-color: #166936;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+    background-color: white;
+    border-right: 1px solid #dee2e6;
+    height: 100vh;
+    position: fixed;
+    padding: 30px 20px;
+    width: 260px;
+    overflow-y: auto;
+    top: 70px; /* Adjust for fixed navbar */
+}
+
+.sidebar h5 {
+    color: #166936;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    border-radius: 6px;
+    color: #333;
+    transition: 0.2s ease-in-out;
+}
+
+.sidebar a:hover {
+    background-color: #e9f5ef;
+    color: #166936;
+}
+
+.sidebar a.active {
+    background-color: #166936;
+    color: white;
+    font-weight: 500;
+}
+
+/* ====== CONTENT AREA ====== */
+.content-wrapper {
+    margin-left: 280px;
+    padding: 30px 40px;
 }
 
 /* Page Header */
 .page-header {
     background-color: #166936;
     color: white;
-    padding: 30px 20px;
-    border-radius: 8px;
-    margin-top: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
-/* Main Content */
-.main-content {
-    margin-top: 40px;
+.page-header h1 {
+    font-weight: 700;
 }
 
-.main-content h2 {
+/* Headings */
+.content-wrapper h2 {
     color: #166936;
-    margin-top: 30px;
+    margin-top: 40px;
     margin-bottom: 15px;
     border-bottom: 2px solid #166936;
-    padding-bottom: 5px;
+    padding-bottom: 6px;
 }
 
-.main-content p,
-.main-content li {
+/* Paragraph & lists */
+.content-wrapper p,
+.content-wrapper li {
+    line-height: 1.6;
     text-align: justify;
-    line-height: 1.5;
 }
 
-/* Nested lists */
-.main-content ol li {
-    margin-bottom: 20px;
+/* Figures */
+.content-wrapper {
+    counter-reset: figure;
 }
 
-.main-content ol li ul {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-}
-
-/* Professional image styling */
 figure {
-    margin: 15px 0;
+    margin: 20px 0;
     text-align: center;
 }
 
 figure img {
     border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 4px;
+    border-radius: 8px;
+    padding: 5px;
     background-color: white;
     max-width: 100%;
-}
-
-/* Automatic figure numbering */
-.main-content {
-    counter-reset: figure;
 }
 
 figcaption::before {
@@ -82,33 +128,18 @@ figcaption::before {
 }
 
 figcaption {
-    margin-top: 5px;
-    color: #6c757d;
+    margin-top: 6px;
     font-size: 0.9rem;
-}
-
-/* Navigation Buttons */
-.nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin: 30px 0;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.nav-buttons a {
-    min-width: 180px;
+    color: #6c757d;
 }
 
 /* Footer */
 footer {
-    margin-top: 60px;
+    margin-top: 80px;
     padding: 20px 0;
-    background-color: #f5f5f5;
     text-align: center;
     font-size: 0.9rem;
-    color: #555;
-    border-top: 1px solid #ddd;
+    color: #666;
 }
 
 </style>
@@ -116,202 +147,122 @@ footer {
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="">Post-GWAS Analysis using CropGalaxy</a>
+<!-- ====== Frozen Top Navigation ====== -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <div class="container-fluid">
 
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../modules.html">Modules</a>
-        </li>
-      </ul>
+    <!-- Title -->
+    <a class="navbar-brand" href="#">Exercise 2 - Identifying Candidate Genes</a>
+
+    <!-- Right Side Buttons -->
+    <div class="ms-auto d-flex gap-2">
+      <a href="../index.html" class="btn btn-outline-light btn-sm">Home</a>
+      <a href="../modules.html" class="btn btn-light btn-sm">Modules</a>
     </div>
+
   </div>
 </nav>
 
-<div class="container">
+<!-- ====== Sidebar ====== -->
+<div class="sidebar">
+    <h5>Overview</h5>
 
-<div class="page-header">
-<h1>Exercise 2</h1>
-<h4>Identifying Candidate Genes from a Genomic Region of Interest</h4>
+    <a href="#objective">Objective</a>
+    <a href="#preparation">Preparation</a>
+    <a href="#liftover">Liftover_via_SNP</a>
+    <a href="#blat">Blat Alignment Filter</a>
+    <a href="#genes">Get-genes-by-region(s) IDs v2</a>
+    <a href="#subseq">Get-subseq</a>
 </div>
 
-<div class="main-content">
+<!-- ====== Main Content ====== -->
+<div class="content-wrapper">
 
-<h2>Objective</h2>
-
+<h2 id="objective">Objective</h2>
 <p>
 Learn how to identify candidate genes from a genomic region of interest using CropGalaxy and its integrated tools.
 </p>
 
-<h2>Instructions</h2>
+<h2 id="preparation">Preparation</h2>
+Open <a href="http://cropgalaxy.duckdns.org/" target="_blank">CropGalaxy</a>. 
+  You will see three main panels: 
+    <ul> 
+      <li><strong>Left panel:</strong> Available tools</li> 
+      <li><strong>Middle panel:</strong> Analysis workspace</li> 
+      <li><strong>Right panel:</strong> Analysis history</li> 
+    </ul> 
+    <figure> <img src="../assets/landing_page.png" alt="CropGalaxy landing page"> <figcaption>CropGalaxy landing page showing the three main panels</figcaption> </figure>
+
+<h2 id="liftover">Liftover_via_SNP</h2>
+
+<p>
+This tool maps genomic regions from a source genome to a target genome using SNP-guided alignment.
+</p>
 
 <ol>
 
-<li>
-Open <a href="http://cropgalaxy.duckdns.org/" target="_blank">CropGalaxy</a>.
-You will see three main panels:
-
-<ul>
-<li><strong>Left panel:</strong> Available tools</li>
-<li><strong>Middle panel:</strong> Analysis workspace</li>
-<li><strong>Right panel:</strong> Analysis history</li>
-</ul>
-
-<figure>
-<img src="../assets/landing_page.png" alt="CropGalaxy landing page">
-<figcaption>CropGalaxy landing page showing the three main panels</figcaption>
-</figure>
-
+<li>Select the RiceGalaxy: SNP Data Tools suite.</li>
+<li>Choose <strong>Liftover_via_SNP</strong>.</li>
+<li>Set parameters:
+    <ul>
+        <li>Source genome: <strong>Nipponbare</strong></li>
+        <li>Coordinates: Chr02, 22001414 – 22831782</li>
+        <li>Target genome: <strong>N22</strong></li>
+    </ul>
 </li>
-
-
-<li>
-
-Select the <strong>RiceGalaxy: SNP Data Tools</strong> suite.
-
-<br><em>Tip: Use the search bar to locate tools faster.</em>
-
-<figure>
-<img src="../assets/snpdatatools.png" alt="SNP Data Tools">
-<figcaption>SNP Data Tools suite in the tool panel</figcaption>
-</figure>
-
-</li>
-
-
-<li>
-
-Select the <strong>Liftover_via_SNP</strong> tool.
-
-<p>
-This tool maps genomic regions from a source genome to a target genome using BLAT alignment.
-</p>
+<li>Click <strong>Run Tool</strong></li>
+</ol>
 
 <figure>
 <img src="../assets/liftover-via-snp.png" alt="Liftover tool">
-<figcaption>Liftover_via_SNP tool interface</figcaption>
+<figcaption>Liftover_via_SNP interface</figcaption>
 </figure>
 
-</li>
 
 
-<li>
-
-Configure Lift-Over parameters:
-
-<ol type="a">
-
-<li>Select <strong>Nipponbare</strong> as source genome</li>
-
-<li>
-Enter coordinates:
-
-<strong>Chr02</strong>,  
-<strong>22001414</strong>,  
-<strong>22831782</strong>
-
-<br>
-<em>Note: Incorrect chromosome names will cause errors.</em>
-
-</li>
-
-<li>Select <strong>N22</strong> as target genome</li>
-
-<li>Leave other settings as default</li>
-
-</ol>
-
-<figure>
-<img src="../assets/liftover-via-snp_parameters.png" alt="Parameters">
-<figcaption>Liftover tool parameters</figcaption>
-</figure>
-
-</li>
 
 
-<li>
-
-Rename history to:
-
-<strong>PostGWAS hands-on</strong>
-
-<figure>
-<img src="../assets/history_rename.png" alt="Rename history">
-<figcaption>Renaming analysis history</figcaption>
-</figure>
-
-</li>
-
-
-<li>
-
-Click <strong>Run Tool</strong>
-
-<figure>
-<img src="../assets/liftover-via-snp_tool-result.png" alt="Tool results">
-<figcaption>Liftover tool results in history panel</figcaption>
-</figure>
-
-</li>
-
-
-<li>
-
-<strong>Viewing output datasets:</strong> <em>Click the <strong>View Data</strong> icon</em>
-
-<figure>
-<img src="../assets/liftover-region-in-n22.png">
-<figcaption>Lifted-over region in N22 genome</figcaption>
-</figure>
-
-<br>
-<figure>
-<img src="../assets/query-sequence-from-irgsp.png">
-<figcaption>Query sequence from IRGSP reference genome</figcaption>
-</figure>
-
-</li>
-
-
-</ol>
-
-
-<h2>Notes</h2>
+<h2 id="blat">Blat Alignment Filter</h2>
 
 <p>
-Follow each step carefully and document results for future analysis.
+Filters alignment results based on identity, coverage, and mapping quality to refine genomic region mapping.
 </p>
 
+<h2 id="genes">Get-genes-by-region(s) IDs v2</h2>
+
+<p>
+Extracts gene IDs located within the lifted-over genomic region.
+</p>
+
+<h2 id="subseq">Get-subseq</h2>
+
+<p>
+Retrieves nucleotide sequences of candidate genes for downstream functional analysis.
+</p>
+
+<br>
+
+<!-- Navigation Buttons Bottom -->
+<div class="nav-buttons d-flex justify-content-between mt-5">
+    
+    <!-- Left Button -->
+    <a href="../modules.html" class="btn btn-outline-secondary">
+        &larr; Back to Modules
+    </a>
+
+    <!-- Right Button -->
+    <a href="exercise2.html" class="btn btn-success">
+        Exercise 2 &rarr;
+    </a>
 
 </div>
 
-
-<div class="nav-buttons">
-
-<a href="exercise1.html" class="btn btn-outline-secondary">
-← Exercise 1
-</a>
-
-<a href="exercise3.html" class="btn btn-success">
-Exercise 3 →
-</a>
-
-</div>
-
-</div>
-
-
+  
 <footer>
-
 © 2026 CropGalaxy Training. All rights reserved.
-
 </footer>
+
+</div>
 
 </body>
 </html>
