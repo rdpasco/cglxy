@@ -352,10 +352,49 @@ It uses "awk" Linux utility in the background to filter the alignment results.
 <!-- ====== Get-genes-by-region(s) IDs v2 ====== -->
 <h2 id="genes">Get-genes-by-region(s) IDs v2</h2>
 
-<p>
-Extracts gene IDs located within the lifted-over genomic region.
-</p>
+<p>Now, we want to look for candidate genes that lie in this region. </p>
 
+<ol>
+  <li>Go to RiceGalaxy: SNP Data tools suite again and select <strong>Get Genes from Region IDs v2</strong>.
+    <figure>
+    	<img src="../assets/get-genes-by-region.png" alt="Get Genes by Region tool">
+    	<figcaption>Get Genes from Region IDs v2 tool</figcaption>
+    </figure>   
+  </li>
+
+  <li> Set parameters:
+    <ol type="a">
+      <li>Set the Reference genomes to get genes to : <strong>Oryza sativa N22 (aus) new annotation</strong></li>
+      <li>Set Gene or mRNA to: <strong>mRNA</strong></li>
+      <li>Set Type in a region directly (chr:start-end), OR use regions list from history? to: <strong>Directly type-in region</strong></li>
+      <li>To extract the genes in the QTL from N22 mRNA; use the lower & upper bound of the lift-over results. We will use here the one we got from the previous step:
+          <strong>Chr02:22947842-23769036</strong>.
+      </li>
+      <li>Once the parameters are set, click <strong>Run Tool</strong></li>
+    </ol>
+
+    <figure>
+    	<img src="../assets/get-genes-by-region_parameters.png" alt="Get Genes by Region tool parameters">
+    	<figcaption>Get Genes from Region IDs v2 tool parameters</figcaption>
+    </figure>
+  </li>
+
+  <li> Click <strong>Run Tool</strong>
+    <figure>
+    	<img src="../assets/get-genes-by-region_result.png" alt="Get Genes by Region tool result">
+    	<figcaption>Get Genes from Region IDs v2 tool result</figcaption>
+    </figure>
+  </li>
+
+  <li> Click on the <strong>View Data</strong> to see the list of genes. 
+    <p>You will see that there are 141 genes (mRNA) in the lift-over region from N22 reference genome. </p>
+    
+    <figure>
+    	<img src="../assets/get-genes-by-region_output.png" alt="Get Genes by Region tool output">
+    	<figcaption>Get Genes from Region IDs v2 tool output showing 29 genes in the lifted-over region</figcaption>
+    </figure>
+
+</ol>
 
 
 <!-- ====== Get-subseq ====== -->
