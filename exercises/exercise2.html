@@ -18,7 +18,7 @@
 .page-header {
     background-color: #166936;
     color: white;
-    padding: 40px 20px;
+    padding: 30px 20px;
     border-radius: 8px;
     margin-top: 20px;
     text-align: center;
@@ -29,9 +29,10 @@
     font-size: 2rem;
 }
 
-.page-header p {
-    font-size: 1.1rem;
+.page-header h4 {
+    font-size: 1.2rem;
     opacity: 0.9;
+    margin-top: 10px;
 }
 
 /* Main Content */
@@ -41,19 +42,27 @@
 
 .main-content h2 {
     color: #166936;
-    margin-top: 0;
+    margin-top: 30px;
     margin-bottom: 15px;
     border-bottom: 2px solid #166936;
     padding-bottom: 5px;
 }
 
 .main-content p {
-    line-height: 1.7;
-    margin-bottom: 20px;
+    line-height: 1.5;
+    margin-bottom: 15px;
 }
 
 .main-content ol li {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.main-content ol li ul {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    line-height: 1.4;
 }
 
 /* Image Placeholder */
@@ -131,34 +140,44 @@ footer {
   <!-- Main Content -->
   <div class="main-content">
     <h2>Objective</h2>
-    <p>Learn how to identify candidate genes from a genomic region of interest using CropGalaxy and related tools.</p>
+    <p>Learn how to identify candidate genes from a genomic region of interest using CropGalaxy and its integrated tools.</p>
 
     <h2>Instructions</h2>
     <ol>
       <li>
-        Open the CropGalaxy interface and locate the genomic region of interest.
-        <div class="image-placeholder">[Insert screenshot of genomic region selection here]</div>
+        Open <a href="http://cropgalaxy.duckdns.org/" target="_blank">CropGalaxy</a>. You will see three main panels on the landing page:
+        <ul>
+          <li><strong>Left panel:</strong> All available tools.</li>
+          <li><strong>Right panel:</strong> Current analysis history, showing datasets generated from each tool run.</li>
+          <li><strong>Middle panel:</strong> Analysis workspace displaying tool parameters and selected dataset contents.</li>
+        </ul>
+        <img src="../assets/landing_page.png" alt="Landing Page of CropGalaxy" class="img-fluid my-2">
       </li>
+
       <li>
-        Explore available datasets corresponding to the region.
-        <div class="image-placeholder">[Insert screenshot of dataset panel here]</div>
+        Select the <strong>RiceGalaxy: SNP Data Tools</strong> suite from the tool panel. This contains the specific tool needed for candidate gene analysis.
+        <br><em>Tip: You can also use the search bar to locate the tool quickly.</em>
+        <img src="../assets/snpdatatools.png" alt="SNP Data Tools in RiceGalaxy" class="img-fluid my-2">
       </li>
+
       <li>
-        Run candidate gene identification tools on the selected region.
+        Run the candidate gene identification tools on your selected genomic region.
         <div class="image-placeholder">[Insert screenshot of tool execution here]</div>
       </li>
+
       <li>
-        Review the output and highlight potential candidate genes.
+        Review the output and identify potential candidate genes.
         <div class="image-placeholder">[Insert screenshot of results here]</div>
       </li>
+
       <li>
-        Save your results and add notes for further analysis.
+        Save your results and add notes for future reference.
         <div class="image-placeholder">[Insert screenshot of saved results here]</div>
       </li>
     </ol>
 
     <h2>Notes</h2>
-    <p>This exercise helps you practice selecting a genomic region and applying analytical tools to identify candidate genes. Ensure you follow each step carefully and document your observations for future exercises.</p>
+    <p>This exercise demonstrates how to select a genomic region and apply analytical tools to identify candidate genes. Follow each step carefully and document your observations for later exercises.</p>
   </div>
 
   <!-- Navigation Buttons Bottom -->
@@ -166,7 +185,6 @@ footer {
     <a href="exercise1.html" class="btn btn-outline-secondary">&larr; Exercise 1</a>
     <a href="exercise3.html" class="btn btn-success">Exercise 3 &rarr;</a>
   </div>
-
 </div>
 
 <footer>
