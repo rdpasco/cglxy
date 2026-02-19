@@ -9,145 +9,208 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-/* Navbar */
+
+/* ====== GLOBAL ====== */
+body {
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 70px;
+}
+
+/* ====== NAVBAR ====== */
 .navbar-custom {
     background-color: #166936;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+    background-color: white;
+    border-right: 1px solid #dee2e6;
+    height: 100vh;
+    position: fixed;
+    padding: 30px 20px;
+    width: 260px;
+    overflow-y: auto;
+    top: 70px;
+}
+
+.sidebar h5 {
+    color: #166936;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    border-radius: 6px;
+    color: #333;
+    transition: 0.2s ease-in-out;
+}
+
+.sidebar a:hover {
+    background-color: #e9f5ef;
+    color: #166936;
+}
+
+.sidebar a.active {
+    background-color: #166936;
+    color: white;
+    font-weight: 500;
+}
+
+/* ====== CONTENT ====== */
+.content-wrapper {
+    margin-left: 280px;
+    padding: 30px 40px;
 }
 
 /* Page Header */
 .page-header {
     background-color: #166936;
     color: white;
-    padding: 40px 20px;
-    border-radius: 8px;
-    margin-top: 20px;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .page-header h1 {
-    font-size: 2rem;
+    font-weight: 700;
 }
 
-.page-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-/* Main Content */
-.main-content {
-    margin-top: 40px;
-}
-
-.main-content h2 {
+/* Section Headings */
+.content-wrapper h2 {
     color: #166936;
-    margin-top: 0;
+    margin-top: 40px;
     margin-bottom: 15px;
     border-bottom: 2px solid #166936;
-    padding-bottom: 5px;
+    padding-bottom: 6px;
 }
 
-.main-content p {
+.content-wrapper p,
+.content-wrapper li {
     line-height: 1.7;
-    margin-bottom: 20px;
-}
-
-.main-content ul {
-    margin-bottom: 20px;
+    text-align: justify;
 }
 
 /* Navigation Buttons */
 .nav-buttons {
     display: flex;
     justify-content: space-between;
-    margin: 30px 0;
+    margin-top: 50px;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-.nav-buttons a {
-    min-width: 180px;
-}
-
 /* Footer */
 footer {
-    margin-top: 60px;
+    margin-top: 80px;
     padding: 20px 0;
-    background-color: #f5f5f5;
     text-align: center;
     font-size: 0.9rem;
-    color: #555;
-    border-top: 1px solid #ddd;
+    color: #666;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="">Post-GWAS Analysis using CropGalaxy</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../modules.html">Modules</a>
-        </li>
-      </ul>
+<!-- ====== Fixed Top Navbar ====== -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Lecture 2 - How to Use CropGalaxy for Post-GWAS Analysis</a>
+
+    <div class="ms-auto d-flex gap-2">
+      <a href="../index.html" class="btn btn-outline-light btn-sm">Home</a>
+      <a href="../modules.html" class="btn btn-light btn-sm">Modules</a>
     </div>
   </div>
 </nav>
 
-<!-- Page Header -->
-<div class="container">
-  <div class="page-header">
-    <h1>Lecture 2</h1>
-    <h4>How to Use CropGalaxy for Post-GWAS Analysis</h4>
-  </div>
+<!-- ====== Sidebar ====== -->
+<div class="sidebar">
+    <h5>Overview</h5>
+    <a href="#introduction" class="active">Introduction</a>
+    <a href="#objectives">Objectives</a>
+    <a href="#content">Lecture Content</a>
+    <a href="#next">Next Steps</a>
+</div>
 
-  <!-- Navigation Buttons Top -->
- <!-- <div class="nav-buttons">
-    <a href="../modules.html" class="btn btn-outline-secondary">&larr; Back to Modules</a>
-    <a href="lecture2.html" class="btn btn-success">Next Lecture &rarr;</a>
-  </div>-->
+<!-- ====== Main Content ====== -->
+<div class="content-wrapper">
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <h2>Introduction</h2>
-    <p>Welcome to Lecture 2 of the Post-GWAS Analysis Training course. 
+    <!-- Header -->
 
-    <h2>Objectives</h2>
+
+    <!-- Introduction -->
+    <h2 id="introduction">Introduction</h2>
+    <p>
+        Welcome to Lecture 2 of the Post-GWAS Analysis Training course. 
+        In this session, we focus on applying CropGalaxy tools to 
+        post-GWAS analysis workflows, including region exploration, 
+        gene identification, and functional investigation.
+    </p>
+
+    <!-- Objectives -->
+    <h2 id="objectives">Objectives</h2>
     <ul>
-      <li>Understand the layout of CropGalaxy.</li>
-      <li>Learn how to access and use core tools for analysis.</li>
-      <li>Explore sample datasets and workflow management.</li>
+        <li>Understand the workflow of post-GWAS candidate gene identification.</li>
+        <li>Learn how to access and configure core analysis tools.</li>
+        <li>Explore how genomic regions are processed across reference genomes.</li>
+        <li>Understand dataset handling and workflow integration.</li>
     </ul>
 
-    <h2>Content</h2>
-    <p>We will start by opening CropGalaxy, exploring the menus and tools available, and then perform a guided walkthrough using a sample dataset. By the end of this lecture, you should feel confident navigating the platform and identifying the main features relevant to post-GWAS analysis.</p>
+    <!-- Lecture Content -->
+    <h2 id="content">Lecture Content</h2>
+    <p>
+        We will begin with a review of a GWAS-identified QTL region 
+        and demonstrate how to refine the region using alignment tools. 
+        From there, we will extract candidate genes and retrieve their 
+        sequences for downstream functional interpretation.
+    </p>
 
-    <h2>Next Steps</h2>
-    <p>After completing this lecture, proceed to Exercise 1 to practice navigating the CropGalaxy interface using real datasets.</p>
-  </div>
+    <p>
+        The session includes a guided walkthrough of a complete 
+        post-GWAS workflow using CropGalaxy tools, preparing you 
+        for the upcoming hands-on exercises.
+    </p>
 
-  <!-- Navigation Buttons Bottom -->
-  <div class="nav-buttons">
-    <a href="lecture1.html" class="btn btn-outline-secondary">&larr; Back to Lecture 1</a>
-    <a href="../exercises/exercise1.html" class="btn btn-success">Go to Exercises &rarr;</a>
-  </div>
+    <!-- Next Steps -->
+    <h2 id="next">Next Steps</h2>
+    <p>
+        After completing this lecture, proceed to 
+        <strong>Exercise 1</strong> to begin practical application 
+        of the workflow using real genomic datasets.
+    </p>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <a href="lecture1.html" class="btn btn-outline-secondary">
+            &larr; Back to Lecture 1
+        </a>
+
+        <a href="../exercises/exercise1.html" class="btn btn-success">
+            Go to Exercises &rarr;
+        </a>
+    </div>
+
+    <footer>
+        © 2026 CropGalaxy Training. All rights reserved.
+    </footer>
 
 </div>
 
-<footer>
-  &copy; 2026 CropGalaxy Training. All rights reserved.
-</footer>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
