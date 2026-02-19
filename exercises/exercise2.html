@@ -296,13 +296,56 @@ It uses "awk" Linux utility in the background to filter the alignment results.
 </p>
 <br>
 <ol>
-  <li>Select the <strong>Blat Alignment Filter</strong> tool under SNP Data Tools.</li>
+  <li>Select the <strong>Blat Alignment Filter</strong> tool under SNP Data Tools.
 	  <figure>
 	  	<img src="../assets/blat-alignment-filter.png" alt="Blat Alignment Filter">
 	  	<figcaption>Blat Alignment Filter</figcaption>
 	  </figure>
+  </li>
 
+  <li>Set parameters:
+    <ol type="a">
+      <li>Input dataset: <strong>Liftover_via_SNP output</strong></li>
+      <li>Percent of length of query sequence that matches target sequence (usually 50 - 100%):  <strong>90%</strong></li>
+      <li>Leave other settings as default</li>
+    </ol>
 
+    <figure>
+	  	<img src="../assets/blat-alignment-filter_parameters.png" alt="Blat Alignment Filter parameters">
+	  	<figcaption>Blat Alignment Filter Parameters</figcaption>
+	  </figure>
+  </li>
+
+  <li>Click <strong>Run Tool</strong>
+    <figure>
+	  	<img src="../assets/blat-alignment-filter_result.png" alt="Blat Alignment Filter tool result">
+	  	<figcaption>Blat Alignment Filter tool result</figcaption>
+	  </figure>
+  </li> 
+  
+  <li> Click on the <strong>View Data</strong> button to see the result file. You will see that the resulting file now only has two entries.
+    <figure>
+	  	<img src="../assets/blat-alignment-filter_output.png" alt="Blat Alignment Filter tool output">
+	  	<figcaption>Blat Alignment Filter tool output</figcaption>
+	  </figure>
+  </li>
+
+  <li> <strong>Lifted-over coordinates on N22</strong>: You now have the new coordinates in N22 genome.
+    <ol type="a">
+      <li>Copy the chromosome <strong>Chr02</strong>.</li>
+      <li>Copy the value of the first entry in "T start" (Column 16). This will become your lower bound coordinate: <strong>22947842</strong></li>
+      <li>Copy the value of the second entry in "T end" (Column 17). This will become your upper bound coordinate: <strong>23769036</strong></li>
+    </ol>
+    <br>
+    <p>The N22 genome coordinate of the lifted-over QTL is: <strong>Chr02:22947842-23769036</strong></p>
+
+    <figure>
+    	<img src="../assets/blat-alignment-filter_region.png" alt="Lifted-over coordinates on N22">
+    	<figcaption>Lifted-over coordinates on N22</figcaption>
+    </figure>
+s
+
+  </li>
 
 </ol>
 
