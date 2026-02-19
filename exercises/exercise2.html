@@ -9,6 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+
 /* Navbar */
 .navbar-custom {
     background-color: #166936;
@@ -25,16 +26,6 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.page-header h1 {
-    font-size: 2rem;
-}
-
-.page-header h4 {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-top: 10px;
-}
-
 /* Main Content */
 .main-content {
     margin-top: 40px;
@@ -48,38 +39,52 @@
     padding-bottom: 5px;
 }
 
-.main-content p {
+.main-content p,
+.main-content li {
+    text-align: justify;
     line-height: 1.5;
-    margin-bottom: 15px;
 }
 
+/* Nested lists */
 .main-content ol li {
     margin-bottom: 20px;
-    line-height: 1.5;
 }
 
 .main-content ol li ul {
     margin-top: 5px;
     margin-bottom: 10px;
     padding-left: 20px;
-    line-height: 1.4;
 }
 
-/* Image Placeholder */
-.image-placeholder {
-    display: block;
-    width: 100%;
-    max-width: 600px;
-    height: 300px;
-    background-color: #e9ecef;
-    border: 2px dashed #166936;
-    border-radius: 6px;
-    margin: 10px 0 20px;
+/* Professional image styling */
+figure {
+    margin: 15px 0;
     text-align: center;
-    line-height: 300px;
-    color: #555;
-    font-style: italic;
-    font-size: 1rem;
+}
+
+figure img {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 4px;
+    background-color: white;
+    max-width: 100%;
+}
+
+/* Automatic figure numbering */
+.main-content {
+    counter-reset: figure;
+}
+
+figcaption::before {
+    counter-increment: figure;
+    content: "Figure " counter(figure) ". ";
+    font-weight: bold;
+}
+
+figcaption {
+    margin-top: 5px;
+    color: #6c757d;
+    font-size: 0.9rem;
 }
 
 /* Navigation Buttons */
@@ -105,6 +110,7 @@ footer {
     color: #555;
     border-top: 1px solid #ddd;
 }
+
 </style>
 </head>
 
@@ -114,10 +120,8 @@ footer {
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
   <div class="container">
     <a class="navbar-brand fw-bold" href="">Post-GWAS Analysis using CropGalaxy</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" href="../index.html">Home</a>
@@ -130,67 +134,184 @@ footer {
   </div>
 </nav>
 
-<!-- Page Header -->
 <div class="container">
-  <div class="page-header">
-    <h1>Exercise 2</h1>
-    <h4>Identifying Candidate Genes from a Genomic Region of Interest</h4>
-  </div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <h2>Objective</h2>
-    <p>Learn how to identify candidate genes from a genomic region of interest using CropGalaxy and its integrated tools.</p>
-
-    <h2>Instructions</h2>
-    <ol>
-      <li>
-        Open <a href="http://cropgalaxy.duckdns.org/" target="_blank">CropGalaxy</a>. You will see three main panels on the landing page:
-        <ul>
-          <li><strong>Left panel:</strong> All available tools.</li>
-          <li><strong>Right panel:</strong> Current analysis history, showing datasets generated from each tool run.</li>
-          <li><strong>Middle panel:</strong> Analysis workspace displaying tool parameters and selected dataset contents.</li>
-        </ul>
-        <img src="../assets/landing_page.png" alt="Landing Page of CropGalaxy" class="img-fluid my-2">
-      </li>
-
-      <li>
-        Select the <strong>RiceGalaxy: SNP Data Tools</strong> suite from the tool panel. This contains the specific tool needed for candidate gene analysis.
-        <br><em>Tip: You can also use the search bar to locate the tool quickly.</em>
-        <img src="../assets/snpdatatools.png" alt="SNP Data Tools in RiceGalaxy" class="img-fluid my-2">
-      </li>
-
-      <li>
-        Run the candidate gene identification tools on your selected genomic region.
-        <div class="image-placeholder">[Insert screenshot of tool execution here]</div>
-      </li>
-
-      <li>
-        Review the output and identify potential candidate genes.
-        <div class="image-placeholder">[Insert screenshot of results here]</div>
-      </li>
-
-      <li>
-        Save your results and add notes for future reference.
-        <div class="image-placeholder">[Insert screenshot of saved results here]</div>
-      </li>
-    </ol>
-
-    <h2>Notes</h2>
-    <p>This exercise demonstrates how to select a genomic region and apply analytical tools to identify candidate genes. Follow each step carefully and document your observations for later exercises.</p>
-  </div>
-
-  <!-- Navigation Buttons Bottom -->
-  <div class="nav-buttons">
-    <a href="exercise1.html" class="btn btn-outline-secondary">&larr; Exercise 1</a>
-    <a href="exercise3.html" class="btn btn-success">Exercise 3 &rarr;</a>
-  </div>
+<div class="page-header">
+<h1>Exercise 2</h1>
+<h4>Identifying Candidate Genes from a Genomic Region of Interest</h4>
 </div>
 
+<div class="main-content">
+
+<h2>Objective</h2>
+
+<p>
+Learn how to identify candidate genes from a genomic region of interest using CropGalaxy and its integrated tools.
+</p>
+
+<h2>Instructions</h2>
+
+<ol>
+
+<li>
+Open <a href="http://cropgalaxy.duckdns.org/" target="_blank">CropGalaxy</a>.
+You will see three main panels:
+
+<ul>
+<li><strong>Left panel:</strong> Available tools</li>
+<li><strong>Middle panel:</strong> Analysis workspace</li>
+<li><strong>Right panel:</strong> Analysis history</li>
+</ul>
+
+<figure>
+<img src="../assets/landing_page.png" alt="CropGalaxy landing page">
+<figcaption>CropGalaxy landing page showing the three main panels</figcaption>
+</figure>
+
+</li>
+
+
+<li>
+
+Select the <strong>RiceGalaxy: SNP Data Tools</strong> suite.
+
+<br><em>Tip: Use the search bar to locate tools faster.</em>
+
+<figure>
+<img src="../assets/snpdatatools.png" alt="SNP Data Tools">
+<figcaption>SNP Data Tools suite in the tool panel</figcaption>
+</figure>
+
+</li>
+
+
+<li>
+
+Select the <strong>Liftover_via_SNP</strong> tool.
+
+<p>
+This tool maps genomic regions from a source genome to a target genome using BLAT alignment.
+</p>
+
+<figure>
+<img src="../assets/liftover-via-snp.png" alt="Liftover tool">
+<figcaption>Liftover_via_SNP tool interface</figcaption>
+</figure>
+
+</li>
+
+
+<li>
+
+Configure Lift-Over parameters:
+
+<ol type="a">
+
+<li>Select <strong>Nipponbare</strong> as source genome</li>
+
+<li>
+Enter coordinates:
+
+<strong>Chr02</strong>,  
+<strong>22001414</strong>,  
+<strong>22831782</strong>
+
+<br>
+<em>Note: Incorrect chromosome names will cause errors.</em>
+
+</li>
+
+<li>Select <strong>N22</strong> as target genome</li>
+
+<li>Leave other settings as default</li>
+
+</ol>
+
+<figure>
+<img src="../assets/liftover-via-snp_parameters.png" alt="Parameters">
+<figcaption>Liftover tool parameters</figcaption>
+</figure>
+
+</li>
+
+
+<li>
+
+Rename history to:
+
+<strong>PostGWAS hands-on</strong>
+
+<figure>
+<img src="../assets/history_rename.png" alt="Rename history">
+<figcaption>Renaming analysis history</figcaption>
+</figure>
+
+</li>
+
+
+<li>
+
+Click <strong>Run Tool</strong>
+
+<figure>
+<img src="../assets/liftover-via-snp_tool-result.png" alt="Tool results">
+<figcaption>Liftover tool results in history panel</figcaption>
+</figure>
+
+</li>
+
+
+<li>
+
+<strong>Viewing output datasets:</strong> <em>Click the <strong>View Data</strong> icon</em>
+
+<figure>
+<img src="../assets/liftover-region-in-n22.png">
+<figcaption>Lifted-over region in N22 genome</figcaption>
+</figure>
+
+<br>
+<figure>
+<img src="../assets/query-sequence-from-irgsp.png">
+<figcaption>Query sequence from IRGSP reference genome</figcaption>
+</figure>
+
+</li>
+
+
+</ol>
+
+
+<h2>Notes</h2>
+
+<p>
+Follow each step carefully and document results for future analysis.
+</p>
+
+
+</div>
+
+
+<div class="nav-buttons">
+
+<a href="exercise1.html" class="btn btn-outline-secondary">
+← Exercise 1
+</a>
+
+<a href="exercise3.html" class="btn btn-success">
+Exercise 3 →
+</a>
+
+</div>
+
+</div>
+
+
 <footer>
-  &copy; 2026 CropGalaxy Training. All rights reserved.
+
+© 2026 CropGalaxy Training. All rights reserved.
+
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
