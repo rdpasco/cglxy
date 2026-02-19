@@ -183,15 +183,33 @@ footer {
 Learn how to identify candidate genes from a genomic region of interest using CropGalaxy and its integrated tools.
 </p>
 
+<!-- ====== Preparation ====== -->
+
 <h2 id="preparation">Preparation</h2>
-Open <a href="http://cropgalaxy.duckdns.org/" target="_blank">CropGalaxy</a>. 
-  You will see three main panels: 
-    <ul> 
-      <li><strong>Left panel:</strong> Available tools</li> 
-      <li><strong>Middle panel:</strong> Analysis workspace</li> 
-      <li><strong>Right panel:</strong> Analysis history</li> 
-    </ul> 
-    <figure> <img src="../assets/landing_page.png" alt="CropGalaxy landing page"> <figcaption>CropGalaxy landing page showing the three main panels</figcaption> </figure>
+  <ol>
+    <li>
+      Open <a href="http://cropgalaxy.duckdns.org/" target="_blank">CropGalaxy</a>. 
+      You will see three main panels: 
+        <ul> 
+          <li><strong>Left panel:</strong> Available tools</li> 
+          <li><strong>Middle panel:</strong> Analysis workspace</li> 
+          <li><strong>Right panel:</strong> Analysis history</li> 
+        </ul> 
+          <figure> <img src="../assets/landing_page.png" alt="CropGalaxy landing page"> <figcaption>CropGalaxy landing page showing the three main panels</figcaption> </figure>
+    </li>
+  
+    <li>
+      Select the <strong>RiceGalaxy: SNP Data Tools</strong> suite.
+      <br><em>Tip: Use the search bar to locate tools faster.</em>
+      <figure>
+        <img src="../assets/snpdatatools.png" alt="SNP Data Tools">
+        <figcaption>SNP Data Tools suite in the tool panel</figcaption>
+      </figure>
+    </li>
+
+  </ol>
+
+<!-- ====== Liftover via SNP ====== -->
 
 <h2 id="liftover">Liftover_via_SNP</h2>
 
@@ -201,39 +219,118 @@ This tool maps genomic regions from a source genome to a target genome using SNP
 
 <ol>
 
-<li>Select the RiceGalaxy: SNP Data Tools suite.</li>
-<li>Choose <strong>Liftover_via_SNP</strong>.</li>
-<li>Set parameters:
-    <ul>
-        <li>Source genome: <strong>Nipponbare</strong></li>
-        <li>Coordinates: Chr02, 22001414 – 22831782</li>
-        <li>Target genome: <strong>N22</strong></li>
-    </ul>
-</li>
-<li>Click <strong>Run Tool</strong></li>
-</ol>
-
+<li>Select <strong>RiceGalaxy: SNP Data Tools</strong>.</li>
 <figure>
-<img src="../assets/liftover-via-snp.png" alt="Liftover tool">
-<figcaption>Liftover_via_SNP interface</figcaption>
+<img src="../assets/snpdatatools.png" alt="SNP Data Tools">
+<figcaption>SNP Data Tools suite in the tool panel</figcaption>
 </figure>
 
+<li>Select the <strong>Liftover_via_SNP</strong> tool.</li>
+<figure>
+<img src="../assets/liftover-via-snp.png" alt="Liftover tool">
+<figcaption>Liftover_via_SNP</figcaption>
+</figure>
+
+<li>Configure Lift-Over parameters:
+    <ol type="a">
+        <li>Source genome: <strong>Nipponbare</strong></li>
+        <li>Coordinates: <strong>Chr02:22001414–22831782</strong></li>
+        <li>Target genome: <strong>N22</strong></li>
+        <li>Select <strong>N22</strong> as target genome</li>
+        <li>Leave other settings as default</li>
+    </ol>
+
+    <figure>
+      <img src="../assets/liftover-via-snp_parameters.png" alt="Parameters">
+      <figcaption>Liftover tool parameters</figcaption>
+    </figure>
+</li>
+
+<br>
+
+<li> Rename history to: <strong>PostGWAS hands-on</strong>
+  <figure>
+    <img src="../assets/history_rename.png" alt="Rename history">
+    <figcaption>Renaming analysis history</figcaption>
+  </figure>
+</li>
+
+<li>Click <strong>Run Tool</strong>
+  <figure>
+    <img src="../assets/liftover-via-snp_tool-result.png" alt="Tool results">
+    <figcaption>Liftover tool results in history panel</figcaption>
+  </figure>
+</li>
+
+<li> Viewing output datasets:
+<em>Click the <strong>View Data</strong> icon</em>
+	<figure>
+		<img src="../assets/liftover-region-in-n22.png">
+		<figcaption>Lifted-over region in N22 genome</figcaption>
+	</figure>
+
+<br>
+	
+	<figure>
+		<img src="../assets/query-sequence-from-irgsp.png">
+		<figcaption>Query sequence from IRGSP reference genome</figcaption>
+	</figure>
+</li>
+</ol>
 
 
-
+<!-- ====== Blat Alignment Filter ====== -->
 
 <h2 id="blat">Blat Alignment Filter</h2>
 
 <p>
-Filters alignment results based on identity, coverage, and mapping quality to refine genomic region mapping.
+Examine the alignment result. Notice that it shows multiple hits on the probable
+location of the lift-over coordinates. So we need to filter this using the tool: <strong>Blat
+Alignment Filter</strong>
 </p>
+<p>
+The blat-alignment-filter parses alignment output of blat and find-seq (supports
+only blat psl format output), allowing for selection of alignments that pass
+specified criteria (# max mismatches, how much of query length is aligned).
+It uses "awk" Linux utility in the background to filter the alignment results.
+</p>
+<br>
+<ol>
+  <li>Select the <strong>Blat Alignment Filter</strong> tool under SNP Data Tools.</li>
+	  <figure>
+	  	<img src="../assets/blat-alignment-filter.png" alt="Blat Alignment Filter">
+	  	<figcaption>Blat Alignment Filter</figcaption>
+	  </figure>
 
+
+
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ====== Get-genes-by-region(s) IDs v2 ====== -->
 <h2 id="genes">Get-genes-by-region(s) IDs v2</h2>
 
 <p>
 Extracts gene IDs located within the lifted-over genomic region.
 </p>
 
+
+
+<!-- ====== Get-subseq ====== -->
 <h2 id="subseq">Get-subseq</h2>
 
 <p>
