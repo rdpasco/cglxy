@@ -171,8 +171,8 @@ footer {
     <a href="#recap">Recap</a>
     <a href="#find-seq">Find-seq</a>
     <a href="#blat">Blat Alignment Filter</a>
-    <a href="#genes">Get-genes-by-region(s) IDs v2</a>
-    <a href="#subseq">Get-subseq</a>
+    <a href="#post-process">Post-processing</a>
+    <a href="#find-genes">Find genes by term</a>
 </div>
 
 <!-- ====== Main Content ====== -->
@@ -270,17 +270,93 @@ We will filter out PSL table to get only those whose sequence matches <strong>90
 
 <!-- ====== Post-processing ====== -->
 
-<h2 id="genes">Get-genes-by-region(s) IDs v2</h2>
+<h2 id="post-process">Post-processing</h2>
 
 <p>
-Extracts gene IDs located within the lifted-over genomic region.
+We will now extract the genes in column 14 from the output file of the blat
+filtering process. For this, we will use the Text Manipulation tools.
 </p>
 
-<h2 id="subseq">Get-subseq</h2>
+<ol>
+    <li>Search for the <strong>Cut columns from a table</strong> tool under Text Manipulation.</li>
+    <li>Set parameters:
+        <ul>
+            <li>Take out <strong>column 14 (c14)</strong></li>
+            <li>Input: Use the output from the Blat Alignment Filter tool run</li>
+            <li>Delimited by: <strong>Tab</strong></li>
+        </ul>
+    </li>
+
+    <figure>
+        <img src="../assets/cut_parameters.png" alt="Cut columns parameters">
+        <figcaption>Cut columns tool parameters</figcaption>
+    </figure>
+
+    <li>Once the parameters are set, click <strong>Run Tool</strong></li>
+    <li>View the results of the Cut columns tool run.</li>
+    <figure>
+        <img src="../assets/cut_output.png" alt="Cut columns tool result">
+        <figcaption>Cut columns tool run</figcaption>
+    </figure>
+
+
+    <li>Remove the headers and comments using <strong>Remove beginning of a file</strong> tool</li>
+    <li>Set parameters:
+        <ul>
+            <li>Input: Use the output from the Cut columns tool run</li>
+            <li>Remove first: <strong>5</strong></li>
+        </ul>
+    </li>
+    <figure>
+        <img src="../assets/remove-beginning-of-a-file_parameters.png" alt="Remove beginning parameters">
+        <figcaption>Remove beginning tool parameters</figcaption>
+    </figure>
+    <li>Once the parameters are set, click <strong>Run Tool</strong></li>
+    <li>View the results of the Remove beginning of a file tool run.</li>
+    <figure>
+        <img src="../assets/remove-beginning-of-a-file_output.png" alt="Remove beginning tool result">
+        <figcaption>Remove beginning tool run</figcaption>
+    </figure>
+</ol>
+
+<!-- Find genes by term (using the gene list) -->
+
+<h2 id="find-genes">Find genes by term (using the gene list)</h2>
 
 <p>
-Retrieves nucleotide sequences of candidate genes for downstream functional analysis.
+We will now get putative functions information on these genes using an
+annotation from Nipponbare.
+To do that, use the “<strong>Find-genes-by-terms</strong>” tool.
 </p>
+
+<ol>
+    <li>Search for the <strong>Find-genes-by-terms</strong> tool under RiceGalaxy: SNP Data tools suite.</li>
+    <li>Set parameters:
+        <ul>
+            <li>Which genome do you wish to search? <strong>O. sativa Nipponbare cDNA RGAP7 annotation</strong></li>
+            <li>Type in term(s) directly, OR use terms list from history? <strong>Use a list of terms/phrases from history</strong></li>
+            <li>Input: Use the output from the Remove beginning of a file tool run</li>            
+            <li>Case-sensitive search or not? <strong>Case-insensitive</strong></li>
+            <li>Whole word or partial match search? <strong>Partial match</strong></li>
+        </ul>
+    </li>
+
+    <figure>
+        <img src="../assets/find-gene-by-terms_parameters.png" alt="Find genes by term parameters">
+        <figcaption>Find genes by term tool parameters</figcaption>
+    </figure>
+
+    <li>Once the parameters are set, click <strong>Run Tool</strong></li>
+    <li>View the results of the Find-genes-by-terms tool run.</li>
+    <p>After running the tool, you should be able to see on column 7 the annotations regarding the putative function of the genes.</p>
+    <figure>
+        <img src="../assets/find-gene-by-terms_output.png" alt="Find genes by term tool result">
+        <figcaption>Find genes by term tool run</figcaption>    
+    </figure>
+
+    <br><strong>Note</strong>: You may also use other resources such as RicePilaf, Rice SNPSeek, Rice Gene Index to
+gain more insight on the function of the genes as well as gene networks.
+</ol>
 
 <br>
 
