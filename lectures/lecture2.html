@@ -10,33 +10,48 @@
 
 <style>
 
-/* ====== GLOBAL ====== */
+/* ===== GLOBAL ===== */
 body {
     background-color: #f8f9fa;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     padding-top: 70px;
 }
 
-/* ====== NAVBAR ====== */
+/* ===== NAVBAR ===== */
 .navbar-custom {
     background-color: #166936;
 }
 
-.navbar-brand {
-    font-weight: 600;
-    letter-spacing: 0.5px;
+.navbar-inner {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
 }
 
-/* ====== SIDEBAR ====== */
+.navbar-brand {
+    font-weight: 600;
+}
+
+/* ===== CENTERED MAIN CONTAINER ===== */
+.main-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 25px;
+    padding: 25px 15px;
+}
+
+/* ===== SIDEBAR ===== */
 .sidebar {
     background-color: white;
-    border-right: 1px solid #dee2e6;
-    height: 100vh;
-    position: fixed;
-    padding: 30px 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 25px 20px;
     width: 260px;
-    overflow-y: auto;
-    top: 70px;
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .sidebar h5 {
@@ -52,7 +67,7 @@ body {
     text-decoration: none;
     border-radius: 6px;
     color: #333;
-    transition: 0.2s ease-in-out;
+    transition: 0.2s;
 }
 
 .sidebar a:hover {
@@ -63,16 +78,19 @@ body {
 .sidebar a.active {
     background-color: #166936;
     color: white;
-    font-weight: 500;
 }
 
-/* ====== CONTENT ====== */
+/* ===== CONTENT ===== */
 .content-wrapper {
-    margin-left: 280px;
-    padding: 30px 40px;
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Page Header */
+/* Header Section */
 .page-header {
     background-color: #166936;
     color: white;
@@ -80,7 +98,6 @@ body {
     border-radius: 10px;
     margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .page-header h1 {
@@ -113,8 +130,7 @@ body {
 
 /* Footer */
 footer {
-    margin-top: 80px;
-    padding: 20px 0;
+    margin-top: 60px;
     text-align: center;
     font-size: 0.9rem;
     color: #666;
@@ -125,89 +141,101 @@ footer {
 
 <body>
 
-<!-- ====== Fixed Top Navbar ====== -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Lecture 2 - How to Use CropGalaxy for Post-GWAS Analysis</a>
+<div class="navbar-inner d-flex justify-content-between align-items-center px-3">
 
-    <div class="ms-auto d-flex gap-2">
-      <a href="../index.html" class="btn btn-outline-light btn-sm">Home</a>
-      <a href="../modules.html" class="btn btn-light btn-sm">Modules</a>
-    </div>
-  </div>
+<span class="navbar-brand">
+Lecture 2 - Post-GWAS Analysis Workflow
+</span>
+
+<div class="d-flex gap-2">
+<a href="../index.html" class="btn btn-outline-light btn-sm">Home</a>
+<a href="../modules.html" class="btn btn-light btn-sm">Modules</a>
+</div>
+
+</div>
 </nav>
 
-<!-- ====== Sidebar ====== -->
+
+<!-- CENTERED MAIN LAYOUT -->
+<div class="main-container">
+
+<!-- SIDEBAR -->
 <div class="sidebar">
-    <h5>Overview</h5>
+    <h5>Lecture Navigation</h5>
     <a href="#introduction" class="active">Introduction</a>
     <a href="#objectives">Objectives</a>
     <a href="#content">Lecture Content</a>
     <a href="#next">Next Steps</a>
 </div>
 
-<!-- ====== Main Content ====== -->
+
+<!-- CONTENT -->
 <div class="content-wrapper">
 
-    <!-- Header -->
+<div class="page-header">
+    <h1>How to Use CropGalaxy for Post-GWAS Analysis</h1>
+    <p class="lead">Applying structured workflows for candidate gene identification</p>
+</div>
 
+<!-- Introduction -->
+<h2 id="introduction">Introduction</h2>
+<p>
+    Welcome to Lecture 2 of the Post-GWAS Analysis Training course. 
+    In this session, we focus on applying CropGalaxy tools to 
+    post-GWAS analysis workflows, including region exploration, 
+    gene identification, and functional investigation.
+</p>
 
-    <!-- Introduction -->
-    <h2 id="introduction">Introduction</h2>
-    <p>
-        Welcome to Lecture 2 of the Post-GWAS Analysis Training course. 
-        In this session, we focus on applying CropGalaxy tools to 
-        post-GWAS analysis workflows, including region exploration, 
-        gene identification, and functional investigation.
-    </p>
+<!-- Objectives -->
+<h2 id="objectives">Objectives</h2>
+<ul>
+    <li>Understand the workflow of post-GWAS candidate gene identification.</li>
+    <li>Learn how to access and configure core analysis tools.</li>
+    <li>Explore how genomic regions are processed across reference genomes.</li>
+    <li>Understand dataset handling and workflow integration.</li>
+</ul>
 
-    <!-- Objectives -->
-    <h2 id="objectives">Objectives</h2>
-    <ul>
-        <li>Understand the workflow of post-GWAS candidate gene identification.</li>
-        <li>Learn how to access and configure core analysis tools.</li>
-        <li>Explore how genomic regions are processed across reference genomes.</li>
-        <li>Understand dataset handling and workflow integration.</li>
-    </ul>
+<!-- Lecture Content -->
+<h2 id="content">Lecture Content</h2>
+<p>
+    We will begin with a review of a GWAS-identified QTL region 
+    and demonstrate how to refine the region using alignment tools. 
+    From there, we will extract candidate genes and retrieve their 
+    sequences for downstream functional interpretation.
+</p>
 
-    <!-- Lecture Content -->
-    <h2 id="content">Lecture Content</h2>
-    <p>
-        We will begin with a review of a GWAS-identified QTL region 
-        and demonstrate how to refine the region using alignment tools. 
-        From there, we will extract candidate genes and retrieve their 
-        sequences for downstream functional interpretation.
-    </p>
+<p>
+    The session includes a guided walkthrough of a complete 
+    post-GWAS workflow using CropGalaxy tools, preparing you 
+    for the upcoming hands-on exercises.
+</p>
 
-    <p>
-        The session includes a guided walkthrough of a complete 
-        post-GWAS workflow using CropGalaxy tools, preparing you 
-        for the upcoming hands-on exercises.
-    </p>
+<!-- Next Steps -->
+<h2 id="next">Next Steps</h2>
+<p>
+    After completing this lecture, proceed to 
+    <strong>Exercise 1</strong> to begin practical application 
+    of the workflow using real genomic datasets.
+</p>
 
-    <!-- Next Steps -->
-    <h2 id="next">Next Steps</h2>
-    <p>
-        After completing this lecture, proceed to 
-        <strong>Exercise 1</strong> to begin practical application 
-        of the workflow using real genomic datasets.
-    </p>
+<!-- Navigation Buttons -->
+<div class="nav-buttons">
+    <a href="lecture1.html" class="btn btn-outline-secondary">
+        &larr; Back to Lecture 1
+    </a>
 
-    <!-- Navigation Buttons -->
-    <div class="nav-buttons">
-        <a href="lecture1.html" class="btn btn-outline-secondary">
-            &larr; Back to Lecture 1
-        </a>
+    <a href="../exercises/exercise1.html" class="btn btn-success">
+        Go to Exercises &rarr;
+    </a>
+</div>
 
-        <a href="../exercises/exercise1.html" class="btn btn-success">
-            Go to Exercises &rarr;
-        </a>
-    </div>
+<footer>
+    © 2026 CropGalaxy Training. All rights reserved.
+</footer>
 
-    <footer>
-        © 2026 CropGalaxy Training. All rights reserved.
-    </footer>
-
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
