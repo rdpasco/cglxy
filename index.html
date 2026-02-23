@@ -14,7 +14,7 @@
 body {
     background-color: #f8f9fa;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    padding-top: 70px; /* Prevent content under fixed navbar */
+    padding-top: 70px;
 }
 
 /* ====== NAVBAR ====== */
@@ -76,7 +76,7 @@ body {
 .page-header {
     background-color: #166936;
     color: white;
-    padding: 40px;
+    padding: 50px 40px;
     border-radius: 10px;
     margin-bottom: 40px;
     text-align: center;
@@ -85,13 +85,14 @@ body {
 
 .page-header h1 {
     font-weight: 700;
+    margin-bottom: 15px;
 }
 
 /* Headings */
 .content-wrapper h2 {
     color: #166936;
-    margin-top: 40px;
-    margin-bottom: 15px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     border-bottom: 2px solid #166936;
     padding-bottom: 6px;
 }
@@ -120,14 +121,14 @@ footer {
 
 <body>
 
-<!-- ====== Frozen Top Navigation ====== -->
+<!-- ====== Top Navigation ====== -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">CropGalaxy Training</a>
 
     <div class="ms-auto d-flex gap-2">
-      <a href="index.html" class="btn btn-outline-light btn-sm">Home</a>
-      <a href="modules.html" class="btn btn-light btn-sm">Modules</a>
+      <a href="index.html" class="btn btn-light btn-sm">Home</a>
+      <a href="modules.html" class="btn btn-outline-light btn-sm">Modules</a>
     </div>
   </div>
 </nav>
@@ -136,7 +137,12 @@ footer {
 <div class="sidebar">
     <h5>Navigation</h5>
     <a href="#welcome" class="active">Welcome</a>
-    <a href="#about">About the Training</a>
+    <a href="#overview">Overview</a>
+    <a href="#objectives">Learning Objectives</a>
+    <a href="#modules">Training Modules</a>
+    <a href="#audience">Target Audience</a>
+    <a href="#prerequisites">Prerequisites</a>
+    <a href="#features">Features</a>
     <a href="#start">Get Started</a>
 </div>
 
@@ -145,38 +151,131 @@ footer {
 
     <!-- Header -->
     <div class="page-header" id="welcome">
-        <h1>Welcome to the CropGalaxy Training Course</h1>
+        <h1>CropGalaxy Training Program</h1>
         <p class="lead">
-            Learn Post-GWAS Analysis with hands-on exercises using CropGalaxy
+            A comprehensive hands-on training for post-GWAS candidate gene analysis using the CropGalaxy platform.
         </p>
+        <a href="modules.html" class="btn btn-light btn-lg mt-3">
+            Start Learning
+        </a>
     </div>
 
-    <!-- About Section -->
-    <h2 id="about">About This Training</h2>
+    <!-- Overview -->
+    <h2 id="overview">Training Overview</h2>
     <p>
-        This training provides practical skills for interpreting GWAS results 
-        and identifying candidate genes using CropGalaxy. Participants will 
-        navigate the interface, explore genomic datasets, and apply structured 
-        analysis workflows for post-GWAS candidate gene discovery.
+        This training provides structured guidance on how to analyze genome-wide association study (GWAS)
+        results and identify candidate genes using CropGalaxy.
+    </p>
+    <p>
+        Participants will explore genomic datasets, navigate integrated tools,
+        interpret gene annotations, and perform candidate gene prioritization
+        using real rice genomic data.
+    </p>
+    <p>
+        The program is self-paced and designed to bridge the gap between GWAS results
+        and biological interpretation.
     </p>
 
-    <p>
-        The course is designed for graduate students, researchers, and 
-        early-career bioinformaticians who want hands-on experience 
-        with rice genomic data and integrated analysis tools.
-    </p>
+    <!-- Learning Objectives -->
+    <h2 id="objectives">Learning Objectives</h2>
+    <ul>
+        <li>Understand the CropGalaxy interface and integrated genomic tools</li>
+        <li>Navigate genome browsers and genomic datasets</li>
+        <li>Identify candidate genes from GWAS loci</li>
+        <li>Interpret gene annotations and functional information</li>
+        <li>Apply structured post-GWAS analysis workflows</li>
+    </ul>
 
-    <!-- Get Started Section -->
-    <h2 id="start">Get Started</h2>
+    <!-- Modules -->
+    <h2 id="modules">Training Modules</h2>
 
-    <div class="card card-custom shadow-sm p-4">
-        <h4>Begin the Training Modules</h4>
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="card card-custom shadow-sm p-3">
+                <h5>Module 1: Introduction to CropGalaxy</h5>
+                <p>Learn the interface, navigation, and core features of the platform.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card card-custom shadow-sm p-3">
+                <h5>Module 2: Identifying Candidate Genes</h5>
+                <p>Discover how to locate genes associated with GWAS loci.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card card-custom shadow-sm p-3">
+                <h5>Module 3: Investigating Gene Functions</h5>
+                <p>Interpret gene annotation and functional evidence using Nipponbare datasets.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card card-custom shadow-sm p-3">
+                <h5>Hands-on Exercises</h5>
+                <p>Apply your knowledge using guided practical activities.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Audience -->
+    <h2 id="audience">Target Audience</h2>
+    <ul>
+        <li>Graduate students in genomics, bioinformatics, and plant science</li>
+        <li>Researchers conducting GWAS analysis</li>
+        <li>Plant breeders and geneticists</li>
+        <li>Bioinformaticians analyzing crop genomic data</li>
+    </ul>
+
+    <!-- Prerequisites -->
+    <h2 id="prerequisites">Prerequisites</h2>
+    <ul>
+        <li>Basic knowledge of genetics or genomics</li>
+        <li>Familiarity with GWAS concepts (recommended)</li>
+        <li>Basic computer skills</li>
+    </ul>
+
+    <!-- Features -->
+    <h2 id="features">Training Features</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3">
+                <h6>Hands-on Exercises</h6>
+                <p>Practice using real genomic datasets.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3">
+                <h6>Step-by-Step Guidance</h6>
+                <p>Structured learning from basic to advanced concepts.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3">
+                <h6>Integrated Tools</h6>
+                <p>Leverage powerful CropGalaxy genomic analysis tools.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Call to Action -->
+    <h2 id="start">Start Your Training</h2>
+
+    <div class="card card-custom shadow-sm p-4 text-center">
+        <h4>Begin the CropGalaxy Training Program</h4>
         <p>
-            Explore structured lectures and guided exercises designed 
-            to help you master post-GWAS analysis workflows.
+            Access lectures and exercises designed to help you master candidate gene analysis workflows.
         </p>
-        <a href="modules.html" class="btn btn-success">
-            View Modules
+        <a href="modules.html" class="btn btn-success btn-lg">
+            View Training Modules
         </a>
     </div>
 

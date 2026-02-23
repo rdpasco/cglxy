@@ -319,7 +319,7 @@ It uses "awk" Linux utility in the background to filter the alignment results.
   <li>Click <strong>Run Tool</strong>
     <figure>
 	  	<img src="../assets/blat-alignment-filter_result.png" alt="Blat Alignment Filter tool result">
-	  	<figcaption>Blat Alignment Filter tool result</figcaption>
+	  	<figcaption>Blat Alignment Filter tool run</figcaption>
 	  </figure>
   </li> 
   <br>
@@ -382,7 +382,7 @@ It uses "awk" Linux utility in the background to filter the alignment results.
   <li> Click <strong>Run Tool</strong>
     <figure>
     	<img src="../assets/get-genes-by-region_result.png" alt="Get Genes by Region tool result">
-    	<figcaption>Get Genes from Region IDs v2 tool result</figcaption>
+    	<figcaption>Get Genes from Region IDs v2 tool run</figcaption>
     </figure>
   </li>
 
@@ -403,6 +403,47 @@ It uses "awk" Linux utility in the background to filter the alignment results.
 <p>
 Retrieves nucleotide sequences of candidate genes for downstream functional analysis.
 </p>
+
+<ol>
+  <li>Select <strong>Get-subseq</strong> tool.
+    <figure>
+    	<img src="../assets/get-subseq.png" alt="Get-subseq tool">
+    	<figcaption>Get-subseq tool</figcaption>
+    </figure>
+  </li>
+
+  <li> Set parameters:
+    <ol type="a">
+      <li>Set the output of the previous tool as input.</li>
+      <li>Set gene ID column to: <strong>Column: 5</strong></li>
+      <li>Set “Will you select a multiFASTA sequence from history or use a built-in rice genome database?” to: <strong>Use a built -in gene database</strong></li>
+      <li>Set Select reference database to: <strong>N22</strong></li>
+      <li>Once the parameters are set, click <strong>Run Tool</strong></li>
+    </ol>
+
+    <figure>
+    	<img src="../assets/get-subseq_parameters.png" alt="Get-subseq tool parameters">
+    	<figcaption>Get-subseq tool parameters</figcaption>
+    </figure>
+  </li>
+
+  <li> Click <strong>Run Tool</strong>
+    <figure>
+    	<img src="../assets/get-subseq_result.png" alt="Get-subseq tool result">
+    	<figcaption>Get-subseq tool run</figcaption>
+    </figure>
+  </li>
+
+  <li> Click on the <strong>View Data</strong> to display output.
+        <figure>
+    	<img src="../assets/get-subseq_output.png" alt="Get-subseq tool output">
+    	<figcaption>Get-subseq tool output</figcaption>
+    </figure>
+  </li>
+
+    <br><p>You will see that you have now retrieved the nucleotide sequences of all the candidate genes in the lifted-over region.
+    These sequences can be used for downstream functional analysis and gene prioritization. </p>
+  </li>
 
 <br>
 
