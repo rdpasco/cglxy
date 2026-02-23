@@ -10,33 +10,44 @@
 
 <style>
 
-/* ====== GLOBAL ====== */
+/* ===== GLOBAL ===== */
 body {
     background-color: #f8f9fa;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    padding-top: 70px; /* Prevent content hidden behind fixed navbar */
+    padding-top: 70px;
 }
 
-/* ====== NAVBAR ====== */
+/* ===== NAVBAR ===== */
 .navbar-custom {
     background-color: #166936;
 }
 
-.navbar-brand {
-    font-weight: 600;
-    letter-spacing: 0.5px;
+.navbar-inner {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
 }
 
-/* ====== SIDEBAR ====== */
+/* ===== CENTERED MAIN LAYOUT ===== */
+.main-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 25px;
+    padding: 25px 15px;
+}
+
+/* ===== SIDEBAR ===== */
 .sidebar {
     background-color: white;
-    border-right: 1px solid #dee2e6;
-    height: 100vh;
-    position: fixed;
-    padding: 30px 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 25px 20px;
     width: 260px;
-    overflow-y: auto;
-    top: 70px; /* Adjust for fixed navbar */
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .sidebar h5 {
@@ -52,7 +63,7 @@ body {
     text-decoration: none;
     border-radius: 6px;
     color: #333;
-    transition: 0.2s ease-in-out;
+    transition: 0.2s;
 }
 
 .sidebar a:hover {
@@ -63,28 +74,26 @@ body {
 .sidebar a.active {
     background-color: #166936;
     color: white;
-    font-weight: 500;
 }
 
-/* ====== CONTENT AREA ====== */
+/* ===== CONTENT ===== */
 .content-wrapper {
-    margin-left: 280px;
-    padding: 30px 40px;
+    flex: 1;
+    background: white;
+    padding: 35px 45px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Page Header */
+/* Header */
 .page-header {
     background-color: #166936;
     color: white;
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: center;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-
-.page-header h1 {
-    font-weight: 700;
 }
 
 /* Headings */
@@ -96,7 +105,7 @@ body {
     padding-bottom: 6px;
 }
 
-/* Paragraph & lists */
+/* Text */
 .content-wrapper p,
 .content-wrapper li {
     line-height: 1.6;
@@ -109,7 +118,7 @@ body {
 }
 
 figure {
-    margin: 20px 0;
+    margin: 25px 0;
     text-align: center;
 }
 
@@ -136,7 +145,6 @@ figcaption {
 /* Footer */
 footer {
     margin-top: 80px;
-    padding: 20px 0;
     text-align: center;
     font-size: 0.9rem;
     color: #666;
@@ -147,41 +155,53 @@ footer {
 
 <body>
 
-<!-- ====== Frozen Top Navigation ====== -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-  <div class="container-fluid">
 
-    <!-- Title -->
-    <a class="navbar-brand" href="#">Exercise 2 - Identifying Candidate Genes from a Genomic Region of Interest</a>
+<div class="navbar-inner d-flex justify-content-between align-items-center px-3">
 
-    <!-- Right Side Buttons -->
-    <div class="ms-auto d-flex gap-2">
-      <a href="../index.html" class="btn btn-outline-light btn-sm">Home</a>
-      <a href="../modules.html" class="btn btn-light btn-sm">Modules</a>
-    </div>
+<span class="navbar-brand">
+Exercise 2 - Identifying Candidate Genes from a Genomic Region of Interest
+</span>
 
-  </div>
-</nav>
-
-<!-- ====== Sidebar ====== -->
-<div class="sidebar">
-    <h5>Overview</h5>
-
-    <a href="#objective">Objective</a>
-    <a href="#preparation">Preparation</a>
-    <a href="#liftover">Liftover_via_SNP</a>
-    <a href="#blat">Blat Alignment Filter</a>
-    <a href="#genes">Get-genes-by-region(s) IDs v2</a>
-    <a href="#subseq">Get-subseq</a>
+<div class="d-flex gap-2">
+<a href="../index.html" class="btn btn-outline-light btn-sm">Home</a>
+<a href="../modules.html" class="btn btn-light btn-sm">Modules</a>
 </div>
 
-<!-- ====== Main Content ====== -->
+</div>
+</nav>
+
+
+<!-- MAIN CENTERED LAYOUT -->
+<div class="main-container">
+
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+<h5>Overview</h5>
+
+<a href="#objective" class="active">Objective</a>
+<a href="#preparation">Preparation</a>
+<a href="#liftover">Liftover_via_SNP</a>
+<a href="#blat">Blat Alignment Filter</a>
+<a href="#genes">Get-genes-by-region(s) IDs v2</a>
+<a href="#subseq">Get-subseq</a>
+
+</div>
+
+
+
+<!-- CONTENT -->
 <div class="content-wrapper">
+<!-- KEEP ALL YOUR EXISTING CONTENT BELOW UNCHANGED -->
 
 <h2 id="objective">Objective</h2>
 <p>
 Learn how to identify candidate genes from a genomic region of interest using CropGalaxy and its integrated tools.
 </p>
+
 
 <!-- ====== Preparation ====== -->
 
@@ -467,6 +487,7 @@ Retrieves nucleotide sequences of candidate genes for downstream functional anal
 © 2026 CropGalaxy Training. All rights reserved.
 </footer>
 
+</div>
 </div>
 
 </body>

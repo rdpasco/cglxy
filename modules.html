@@ -10,33 +10,48 @@
 
 <style>
 
-/* ====== GLOBAL ====== */
+/* ===== GLOBAL ===== */
 body {
     background-color: #f8f9fa;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     padding-top: 70px;
 }
 
-/* ====== NAVBAR ====== */
+/* ===== NAVBAR ===== */
 .navbar-custom {
     background-color: #166936;
 }
 
-.navbar-brand {
-    font-weight: 600;
-    letter-spacing: 0.5px;
+.navbar-inner {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
 }
 
-/* ====== SIDEBAR ====== */
+.navbar-brand {
+    font-weight: 600;
+}
+
+/* ===== CENTERED MAIN CONTAINER ===== */
+.main-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 25px;
+    padding: 25px 15px;
+}
+
+/* ===== SIDEBAR ===== */
 .sidebar {
     background-color: white;
-    border-right: 1px solid #dee2e6;
-    height: 100vh;
-    position: fixed;
-    padding: 30px 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 25px 20px;
     width: 260px;
-    overflow-y: auto;
-    top: 70px;
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .sidebar h5 {
@@ -52,7 +67,7 @@ body {
     text-decoration: none;
     border-radius: 6px;
     color: #333;
-    transition: 0.2s ease-in-out;
+    transition: 0.2s;
 }
 
 .sidebar a:hover {
@@ -63,16 +78,19 @@ body {
 .sidebar a.active {
     background-color: #166936;
     color: white;
-    font-weight: 500;
 }
 
-/* ====== CONTENT ====== */
+/* ===== CONTENT ===== */
 .content-wrapper {
-    margin-left: 280px;
-    padding: 30px 40px;
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Header */
+/* Header Section */
 .page-header {
     background-color: #166936;
     color: white;
@@ -80,54 +98,37 @@ body {
     border-radius: 10px;
     margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .page-header h1 {
     font-weight: 700;
 }
 
-/* Section Headings */
+/* Headings */
 .content-wrapper h2 {
     color: #166936;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-bottom: 2px solid #166936;
     padding-bottom: 6px;
 }
 
-/* Module List */
-ul.module-list {
-    list-style: none;
-    padding: 0;
-}
-
-ul.module-list li {
-    margin-bottom: 15px;
-}
-
-ul.module-list li a {
-    display: block;
-    padding: 14px 18px;
+/* Cards */
+.card-custom {
+    border-left: 5px solid #166936;
+    transition: transform 0.2s;
+    cursor: pointer;
     text-decoration: none;
-    border-radius: 8px;
-    border: 1px solid #dee2e6;
-    background-color: #ffffff;
-    color: #166936;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
+    color: inherit;
 }
 
-ul.module-list li a:hover {
-    background-color: #e9f5ef;
-    border-color: #166936;
-    transform: translateX(5px);
+.card-custom:hover {
+    transform: scale(1.02);
 }
 
 /* Footer */
 footer {
-    margin-top: 80px;
-    padding: 20px 0;
+    margin-top: 60px;
     text-align: center;
     font-size: 0.9rem;
     color: #666;
@@ -138,73 +139,102 @@ footer {
 
 <body>
 
-<!-- ====== Fixed Top Navbar ====== -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Post-GWAS Analysis using CropGalaxy</a>
+<div class="navbar-inner d-flex justify-content-between align-items-center px-3">
 
-    <div class="ms-auto d-flex gap-2">
-      <a href="index.html" class="btn btn-outline-light btn-sm">Home</a>
-      <a href="modules.html" class="btn btn-light btn-sm">Modules</a>
-    </div>
-  </div>
+<span class="navbar-brand">
+Post-GWAS Analysis using CropGalaxy
+</span>
+
+<div class="d-flex gap-2">
+<a href="index.html" class="btn btn-outline-light btn-sm">Home</a>
+<a href="modules.html" class="btn btn-light btn-sm">Modules</a>
+</div>
+
+</div>
 </nav>
 
-<!-- ====== Sidebar ====== -->
+
+<!-- CENTERED MAIN LAYOUT -->
+<div class="main-container">
+
+<!-- SIDEBAR -->
 <div class="sidebar">
-    <h5>Modules Overview</h5>
+    <h5>Modules Navigation</h5>
+    <a href="#overview" class="active">Overview</a>
     <a href="#lectures">Lectures</a>
     <a href="#exercises">Exercises</a>
 </div>
 
-<!-- ====== Content ====== -->
+
+<!-- CONTENT -->
 <div class="content-wrapper">
 
-    <!-- Header -->
-    <div class="page-header">
-        <h1>Training Modules</h1>
-        <p class="lead">Structured lectures and hands-on exercises for post-GWAS analysis</p>
+<div class="page-header" id="overview">
+<h1>Training Modules</h1>
+<p class="lead">
+Structured lectures and hands-on exercises for post-GWAS analysis
+</p>
+</div>
+
+
+<!-- Lectures -->
+<h2 id="lectures">Lectures</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-6">
+        <a href="lectures/lecture1.html" class="card card-custom shadow-sm p-3 d-block">
+            <h5>Lecture 1: Exploring the CropGalaxy Environment</h5>
+            <p>Introduction to the CropGalaxy interface and navigation tools.</p>
+        </a>
     </div>
 
-    <!-- Lectures -->
-    <h2 id="lectures">Lectures</h2>
-    <ul class="module-list">
-        <li>
-            <a href="lectures/lecture1.html">
-                Lecture 1: Exploring the CropGalaxy Environment
-            </a>
-        </li>
-        <li>
-            <a href="lectures/lecture2.html">
-                Lecture 2: How to Use CropGalaxy for Post-GWAS Analysis
-            </a>
-        </li>
-    </ul>
+    <div class="col-md-6">
+        <a href="lectures/lecture2.html" class="card card-custom shadow-sm p-3 d-block">
+            <h5>Lecture 2: Post-GWAS Analysis Workflow</h5>
+            <p>Step-by-step guidance for conducting candidate gene analysis.</p>
+        </a>
+    </div>
 
-    <!-- Exercises -->
-    <h2 id="exercises">Exercises</h2>
-    <ul class="module-list">
-        <li>
-            <a href="exercises/exercise1.html">
-                Exercise 1: Navigate the CropGalaxy Interface
-            </a>
-        </li>
-        <li>
-            <a href="exercises/exercise2.html">
-                Exercise 2: Identifying Candidate Genes from a Genomic Region of Interest
-            </a>
-        </li>
-        <li>
-            <a href="exercises/exercise3.html">
-                Exercise 3: Investigating Candidate Gene Functions using Nipponbare Annotation
-            </a>
-        </li>
-    </ul>
+</div>
 
-    <footer>
-        © 2026 CropGalaxy Training. All rights reserved.
-    </footer>
 
+<!-- Exercises -->
+<h2 id="exercises">Exercises</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-6">
+        <a href="exercises/exercise1.html" class="card card-custom shadow-sm p-3 d-block">
+            <h5>Exercise 1: Navigate the CropGalaxy Interface</h5>
+            <p>Hands-on practice exploring datasets and tools.</p>
+        </a>
+    </div>
+
+    <div class="col-md-6">
+        <a href="exercises/exercise2.html" class="card card-custom shadow-sm p-3 d-block">
+            <h5>Exercise 2: Identifying Candidate Genes</h5>
+            <p>Locate genes within a genomic region of interest.</p>
+        </a>
+    </div>
+
+    <div class="col-md-6">
+        <a href="exercises/exercise3.html" class="card card-custom shadow-sm p-3 d-block">
+            <h5>Exercise 3: Investigating Gene Functions</h5>
+            <p>Analyze Nipponbare gene annotations and functional evidence.</p>
+        </a>
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 CropGalaxy Training. All rights reserved.
+</footer>
+
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

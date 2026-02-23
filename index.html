@@ -10,33 +10,48 @@
 
 <style>
 
-/* ====== GLOBAL ====== */
+/* ===== GLOBAL ===== */
 body {
     background-color: #f8f9fa;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     padding-top: 70px;
 }
 
-/* ====== NAVBAR ====== */
+/* ===== NAVBAR ===== */
 .navbar-custom {
     background-color: #166936;
 }
 
-.navbar-brand {
-    font-weight: 600;
-    letter-spacing: 0.5px;
+.navbar-inner {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
 }
 
-/* ====== SIDEBAR ====== */
+.navbar-brand {
+    font-weight: 600;
+}
+
+/* ===== CENTERED MAIN CONTAINER ===== */
+.main-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 25px;
+    padding: 25px 15px;
+}
+
+/* ===== SIDEBAR ===== */
 .sidebar {
     background-color: white;
-    border-right: 1px solid #dee2e6;
-    height: 100vh;
-    position: fixed;
-    padding: 30px 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 25px 20px;
     width: 260px;
-    overflow-y: auto;
-    top: 70px;
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .sidebar h5 {
@@ -52,7 +67,7 @@ body {
     text-decoration: none;
     border-radius: 6px;
     color: #333;
-    transition: 0.2s ease-in-out;
+    transition: 0.2s;
 }
 
 .sidebar a:hover {
@@ -63,36 +78,37 @@ body {
 .sidebar a.active {
     background-color: #166936;
     color: white;
-    font-weight: 500;
 }
 
-/* ====== CONTENT AREA ====== */
+/* ===== CONTENT ===== */
 .content-wrapper {
-    margin-left: 280px;
-    padding: 30px 40px;
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 /* Header Section */
 .page-header {
     background-color: #166936;
     color: white;
-    padding: 50px 40px;
+    padding: 40px;
     border-radius: 10px;
     margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .page-header h1 {
     font-weight: 700;
-    margin-bottom: 15px;
 }
 
 /* Headings */
 .content-wrapper h2 {
     color: #166936;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 15px;
     border-bottom: 2px solid #166936;
     padding-bottom: 6px;
 }
@@ -109,8 +125,7 @@ body {
 
 /* Footer */
 footer {
-    margin-top: 80px;
-    padding: 20px 0;
+    margin-top: 60px;
     text-align: center;
     font-size: 0.9rem;
     color: #666;
@@ -121,19 +136,29 @@ footer {
 
 <body>
 
-<!-- ====== Top Navigation ====== -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">CropGalaxy Training</a>
 
-    <div class="ms-auto d-flex gap-2">
-      <a href="index.html" class="btn btn-light btn-sm">Home</a>
-      <a href="modules.html" class="btn btn-outline-light btn-sm">Modules</a>
-    </div>
-  </div>
+<div class="navbar-inner d-flex justify-content-between align-items-center px-3">
+
+<span class="navbar-brand">
+CropGalaxy Training
+</span>
+
+<div class="d-flex gap-2">
+<a href="index.html" class="btn btn-outline-light btn-sm">Home</a>
+<a href="modules.html" class="btn btn-light btn-sm">Modules</a>
+</div>
+
+</div>
 </nav>
 
-<!-- ====== Sidebar ====== -->
+
+<!-- CENTERED MAIN LAYOUT -->
+<div class="main-container">
+
+
+<!-- SIDEBAR -->
 <div class="sidebar">
     <h5>Navigation</h5>
     <a href="#welcome" class="active">Welcome</a>
@@ -146,21 +171,22 @@ footer {
     <a href="#start">Get Started</a>
 </div>
 
-<!-- ====== Main Content ====== -->
+
+<!-- CONTENT -->
 <div class="content-wrapper">
 
-    <!-- Header -->
-    <div class="page-header" id="welcome">
-        <h1>CropGalaxy Training Program</h1>
-        <p class="lead">
-            A comprehensive hands-on training for post-GWAS candidate gene analysis using the CropGalaxy platform.
-        </p>
-        <a href="modules.html" class="btn btn-light btn-lg mt-3">
-            Start Learning
-        </a>
-    </div>
+<div class="page-header" id="welcome">
 
-    <!-- Overview -->
+<h1>Welcome to the CropGalaxy Training Course</h1>
+
+<p class="lead">
+Learn Post-GWAS Analysis with hands-on exercises using CropGalaxy
+</p>
+
+</div>
+
+
+   <!-- Overview -->
     <h2 id="overview">Training Overview</h2>
     <p>
         This training provides structured guidance on how to analyze genome-wide association study (GWAS)
@@ -283,7 +309,10 @@ footer {
         © 2026 CropGalaxy Training. All rights reserved.
     </footer>
 
+
 </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
