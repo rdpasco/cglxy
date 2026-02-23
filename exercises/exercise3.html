@@ -168,8 +168,8 @@ footer {
     <h5>Overview</h5>
 
     <a href="#objective">Objective</a>
-    <a href="#preparation">Preparation</a>
-    <a href="#liftover">Liftover_via_SNP</a>
+    <a href="#recap">Recap</a>
+    <a href="#find-seq">Find-seq</a>
     <a href="#blat">Blat Alignment Filter</a>
     <a href="#genes">Get-genes-by-region(s) IDs v2</a>
     <a href="#subseq">Get-subseq</a>
@@ -183,50 +183,78 @@ footer {
 Learn how to identify candidate genes from a genomic region of interest using CropGalaxy and its integrated tools.
 </p>
 
-<h2 id="preparation">Preparation</h2>
-Open <a href="http://cropgalaxy.duckdns.org/" target="_blank">CropGalaxy</a>. 
-  You will see three main panels: 
-    <ul> 
-      <li><strong>Left panel:</strong> Available tools</li> 
-      <li><strong>Middle panel:</strong> Analysis workspace</li> 
-      <li><strong>Right panel:</strong> Analysis history</li> 
-    </ul> 
-    <figure> <img src="../assets/landing_page.png" alt="CropGalaxy landing page"> <figcaption>CropGalaxy landing page showing the three main panels</figcaption> </figure>
+<h2 id="recap">Recap</h2>
+<p>We generated a gene list and their sequences anchored on N22, an
+aus-type genome, for the QTL, qDTF2.2. We did this because our donor is
+closely related to N22.
+Our goal now is to use available annotations to learn about the putative
+functions of the genes in our list. We will now begin another series of analysis.</p>
 
-<h2 id="liftover">Liftover_via_SNP</h2>
+
+<!-- ====== Find seq ====== -->
+<h2 id="find-seq">Find-seq</h2>
 
 <p>
 This tool maps genomic regions from a source genome to a target genome using SNP-guided alignment.
 </p>
 
 <ol>
+    <li>Select <strong>Find-seq</strong> tool.</li>
+        <figure>
+            <img src="../assets/find-seq.png" alt="Find-seq tool">
+            <figcaption>Find-seq tool interface</figcaption>
+        </figure>
 
-<li>Select the RiceGalaxy: SNP Data Tools suite.</li>
-<li>Choose <strong>Liftover_via_SNP</strong>.</li>
 <li>Set parameters:
     <ul>
-        <li>Source genome: <strong>Nipponbare</strong></li>
-        <li>Coordinates: Chr02, 22001414 – 22831782</li>
-        <li>Target genome: <strong>N22</strong></li>
+        <li>Use the sequences derived from <strong>Exercise 2</strong></li>
+        <li>Select a built-in rice genome/gene database or use a multi-FASTA data from your history? <strong>Use a built-in gene database</strong></li>
+        <li>Select reference database: <strong>N22</strong></li>
+        <li>Leave other settings as default</li>
     </ul>
 </li>
-<li>Click <strong>Run Tool</strong></li>
+    <figure>
+        <img src="../assets/find-seq_parameters.png" alt="Find-seq parameters">
+        <figcaption>Find-seq tool parameters</figcaption>
+    </figure>
+<br>
+<li>Once the parameters are set, click <strong>Run Tool</strong></li>
+    <figure>
+        <img src="../assets/find-seq_result.png" alt="Find-seq run">
+        <figcaption>Running the Find-seq tool</figcaption>
+    </figure>
+
+<li>View the results of the Find-seq tool run.</li>
+<p>Upon closer look on the output, you will notice that there are a lot of gene
+duplications and genome rearrangements given the chromosome location of
+the Nipponbare genes. We will need to filter this using “Blat Alignment Filter”.</p>
+
+    <figure>
+        <img src="../assets/find-seq_output.png" alt="Find-seq result view">
+        <figcaption>Viewing the Find-seq tool result</figcaption>
+    </figure>
 </ol>
 
-<figure>
-<img src="../assets/liftover-via-snp.png" alt="Liftover tool">
-<figcaption>Liftover_via_SNP interface</figcaption>
-</figure>
-
-
-
-
-
+<!-- ====== Blat Alignment Filter ====== -->
 <h2 id="blat">Blat Alignment Filter</h2>
 
 <p>
-Filters alignment results based on identity, coverage, and mapping quality to refine genomic region mapping.
+We will filter out PSL table to get only those whose sequence matches <strong>90%</strong> with the Nipponbare gene sequence.
 </p>
+
+<ol>
+    <li>Search for the <strong>Blat Alignment Filter</strong> tool.</li>
+    <li>Set parameters:
+        <ul>
+            <li>Input: Use the output from the Find-seq tool run</li>
+            <li>Identity cutoff: 90%</li>
+            <li>Leave other settings as default</li>
+        </ul>
+    </li>
+
+
+
+<!-- ====== Blat Alignment Filter ====== -->
 
 <h2 id="genes">Get-genes-by-region(s) IDs v2</h2>
 
@@ -246,8 +274,8 @@ Retrieves nucleotide sequences of candidate genes for downstream functional anal
 <div class="nav-buttons d-flex justify-content-between mt-5">
     
     <!-- Left Button -->
-    <a href="lecture1.html" class="btn btn-outline-secondary">
-        &larr; Exercise 1
+    <a href="exercise2.html" class="btn btn-outline-secondary">
+        &larr; Exercise 2
     </a>
 
     <!-- Right Button -->
