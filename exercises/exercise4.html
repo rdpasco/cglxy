@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Exercise: Phylogenetic Tree Construction using Galaxy</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+body {
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 70px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar-custom {
+    background-color: #166936;
+}
+
+.navbar-inner {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+/* ===== MAIN CENTERED CONTAINER ===== */
+.main-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 25px;
+    padding: 25px 15px;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 25px 20px;
+    width: 260px;
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.sidebar h5 {
+    color: #166936;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    border-radius: 6px;
+    color: #333;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: #e9f5ef;
+    color: #166936;
+}
+
+.sidebar a.active {
+    background-color: #166936;
+    color: white;
+}
+
+/* ===== CONTENT ===== */
+.content-wrapper {
+    flex: 1;
+    background: white;
+    padding: 35px 45px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Page Header */
+.page-header {
+    background-color: #166936;
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Headings */
+.content-wrapper h2 {
+    color: #166936;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #166936;
+    padding-bottom: 6px;
+}
+
+/* Text */
+.content-wrapper p,
+.content-wrapper li {
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Footer */
+footer {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+<div class="navbar-inner d-flex justify-content-between align-items-center px-3">
+<span class="navbar-brand">
+Exercise: Phylogenetic Tree Construction using Galaxy
+</span>
+
+<div class="d-flex gap-2">
+<a href="../index.html" class="btn btn-outline-light btn-sm">Home</a>
+<a href="../modules.html" class="btn btn-light btn-sm">Modules</a>
+</div>
+</div>
+</nav>
+
+<!-- MAIN -->
+<div class="main-container">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<h5>Steps</h5>
+<a href="#objective" class="active">Objective</a>
+<a href="#upload">Upload Data</a>
+<a href="#download">Download Sequences</a>
+<a href="#alignment">Alignment (MAFFT)</a>
+<a href="#tree">Build Tree</a>
+<a href="#visualize">Visualization</a>
+<a href="#interpret">Interpretation</a>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrapper">
+
+<div class="page-header">
+<h3>Phylogenetic Tree Construction</h3>
+<p>Using Galaxy Platform</p>
+</div>
+
+<h2 id="objective">Objective</h2>
+<p>
+Learn how to construct and interpret a phylogenetic tree using protein sequences.
+</p>
+
+<h2 id="upload">Step 1: Upload Accession Numbers</h2>
+<ol>
+<li>Open Galaxy</li>
+<li>Click <strong>Upload Data</strong></li>
+<li>Paste the following:</li>
+</ol>
+
+<pre>
+YP_009724390.1
+YP_009825051.1
+YP_009047204.1
+YP_009555241.1
+</pre>
+
+<p>Click <strong>Start</strong> → <strong>Close</strong></p>
+
+<h2 id="download">Step 2: Download Protein Sequences</h2>
+<ol>
+<li>Go to <strong>Get Data → NCBI Accession Download</strong></li>
+<li>Set:
+    <ul>
+        <li>Input: Uploaded list</li>
+        <li>Molecule type: <strong>Protein</strong></li>
+    </ul>
+</li>
+<li>Click <strong>Run Tool</strong></li>
+</ol>
+
+<h2 id="alignment">Step 3: Multiple Sequence Alignment (MAFFT)</h2>
+<ol>
+<li>Go to <strong>Multiple Alignments → MAFFT</strong></li>
+<li>Input: Downloaded sequences</li>
+<li>Click <strong>Run Tool</strong></li>
+</ol>
+
+<h2 id="tree">Step 4: Build Phylogenetic Tree</h2>
+<ol>
+<li>Go to <strong>Phylogenetics → FastTree</strong></li>
+<li>Input: MAFFT output</li>
+<li>Click <strong>Run Tool</strong></li>
+</ol>
+
+<h2 id="visualize">Step 5: Visualize Tree</h2>
+<ol>
+<li>Go to <strong>Visualization → Newick Display</strong></li>
+<li>Select FastTree output</li>
+<li>Click <strong>Run Tool</strong></li>
+</ol>
+
+<h2 id="interpret">Step 6: Interpret Results</h2>
+<p>Use LLM Hub and enter:</p>
+
+<pre>
+Describe the overall structure of this phylogenetic tree.
+Identify major clusters and explain what they indicate about evolutionary relationships.
+</pre>
+
+<h2>Expected Output</h2>
+<ul>
+<li>Aligned sequences (MSA)</li>
+<li>Phylogenetic tree file</li>
+<li>Tree visualization</li>
+<li>Interpretation of evolutionary relationships</li>
+</ul>
+
+<div class="nav-buttons d-flex justify-content-between mt-5">
+<a href="#" class="btn btn-outline-secondary">&larr; Previous</a>
+<a href="../modules.html" class="btn btn-success">Modules &rarr;</a>
+</div>
+
+<footer>
+© 2026 Galaxy Training. All rights reserved.
+</footer>
+
+</div>
+</div>
+
+</body>
+</html>
